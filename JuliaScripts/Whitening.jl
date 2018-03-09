@@ -1,17 +1,8 @@
-using Plots, RDatasets, Query, DataFrames, StatPlots
+using Plots, RDatasets, DataFrames, StatPlots, Query
 
 gr()
 
 iris = dataset("datasets", "iris")
-
-function SplitDFbySpecies(iris, species)
-    df = @from i in iris begin
-         @where i.Species == species
-         @select {i.PetalLength, i.PetalWidth}
-         @collect DataFrame
-    end
-    return df
-end
 
 function dfmean(df::DataFrame)
     return [mean(i) for i in df.columns]
@@ -31,18 +22,28 @@ function dfcov(df)
     return array
 end
 
-function lintf(df, S)
+function whitening(df)
     groups = Array(df[:Species])
     petals = df[[:PetalLength, :PetalWidth]]
-
     colnames = names(petals)
-    values = Array(petals)
-    values = values * S
-    tf_df = DataFrame()
-    tf_df[colnames[1]] = values[:, 1]
-    tf_df[colnames[2]] = values[:, 2]
-    tf_df[:Species] = groups
 
+    values = Array(petals)
+    mu = reshape(dfmean(petals), (1, 2))
+
+    coviris = dfcov(petals)
+    S = -swap(eigvecs(coviris))
+
+    Lambda = S' * coviris * S
+    L = zeros(size(Lambda))
+    for i in 1:size(L)[1]
+        L[i, i] = sqrt(Lambda[i, i])
+    end
+    u = (values .- mu) * S * inv(L)
+
+    tf_df = DataFrame()
+    tf_df[colnames[1]] = u[:, 1]
+    tf_df[colnames[2]] = u[:, 2]
+    tf_df[:Species] = groups
     return tf_df
 end
 
@@ -57,18 +58,14 @@ end
 @df iris scatter(:PetalLength, :PetalWidth, group=:Species,
                  m=(0.5, [:+ :h :star7], 12), bg=RGB(.2,.2,.2))
 
-scatter!(xlabel="Petal Length", ylabel="Petal Width", title="No Decorrelation",
+scatter!(xlabel="Petal Length", ylabel="Petal Width", title="No Whitening",
          xlims=(1, 7), ylims=(-1, 4))
-savefig("../figures/no_decorrelation.png")
+savefig("../figures/no_whitening.png")
 
-coviris = dfcov(iris[[:PetalLength, :PetalWidth]])
-S = -swap(eigvecs(coviris))
+whitened = whitening(iris)
 
-decorrelated = lintf(iris, S)
-covdecorrelated = dfcov(decorrelated[[:PetalLength, :PetalWidth]])
-
-@df decorrelated scatter(:PetalLength, :PetalWidth, group=:Species,
+@df whitened scatter(:PetalLength, :PetalWidth, group=:Species,
                          m=(0.5, [:+ :h :star7], 12), bg=RGB(.2,.2,.2))
-scatter!(xlabel="Petal Length", ylabel="Petal Width", title="Decorrelated",
-         xlims=(1, 7), ylims=(-2, 3))
-savefig("../figures/decorrelation.png")
+scatter!(xlabel="Petal Length", ylabel="Petal Width", title="Whitened",
+         xlims=(-3, 3), ylims=(-3, 3))
+savefig("../figures/whitened.png")
