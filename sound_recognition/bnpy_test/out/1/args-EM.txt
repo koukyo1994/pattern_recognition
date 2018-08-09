@@ -1,0 +1,7 @@
+algseed 1607680
+convergeThr 0.05
+convergeThrELBO 0.0001
+dataorderseed 8541952
+minLaps 50
+nLap 500
+startLap 0

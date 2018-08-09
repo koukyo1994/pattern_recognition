@@ -1,1 +1,3 @@
 sound_recognition/raw_data/*
+*.mat
+*.png
