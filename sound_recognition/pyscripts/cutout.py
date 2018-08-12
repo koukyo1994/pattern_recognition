@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
 import librosa
+import librosa.display
 from hmmlearn import hmm
+import matplotlib.pyplot as plt
 
 
 def train_hmm(train):
@@ -27,6 +29,18 @@ def main():
     print("Convert into MFCC")
     train = librosa.feature.mfcc(train_wav, sr=44100)
     test = librosa.feature.mfcc(test_wav, sr=44100)
+
+    plt.figure(figsize=(10, 6))
+    plt.subplot(2, 1, 1)
+    librosa.display.specshow(train, sr=44100, x_axis='time')
+    plt.title('Train data MFCC')
+    plt.colorbar()
+
+    plt.subplot(2, 1, 2)
+    librosa.display.specshow(test, sr=44100, x_axis='time')
+    plt.title('Test data MFCC')
+    plt.colorbar()
+    plt.savefig('figure/mfcc.png')
 
     print("Fitting")
     model = train_hmm(train.T)

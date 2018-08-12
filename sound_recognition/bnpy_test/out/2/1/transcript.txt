@@ -1,0 +1,59 @@
+Dataset Summary:
+X Data
+  num examples: 819
+  num dims: 20
+Allocation Model:  Finite mixture model. Dir prior param 1.00
+Obs. Data  Model:  Gaussian with full covariance.
+Obs. Data  Prior:  Gauss-Wishart on mean and covar of each cluster
+  E[  mean[k] ] = 
+   [0. 0.]  ...
+  E[ covar[k] ] = 
+  [[1. 0.]
+   [0. 1.]] ...
+Initialization:
+  initname = randexamples
+  K = 3 (number of clusters)
+  seed = 1607680
+  elapsed_time: 0.0 sec
+Learn Alg: EM | task  1/1 | alg. seed: 1607680 | data order seed: 8541952
+task_output_path: out/2/1
+        1/300 after      0 sec. |    212.6 MiB | K    3 | loss  1.435269923e+10 |  
+        2/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.474554466e+00 | Ndiff   32.008 
+        3/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.463466914e+00 | Ndiff   35.447 
+        4/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.453767736e+00 | Ndiff   27.176 
+        5/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.448445841e+00 | Ndiff   13.370 
+        6/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.445967512e+00 | Ndiff   10.201 
+        7/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.443905530e+00 | Ndiff   11.729 
+        8/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.442371085e+00 | Ndiff   10.578 
+        9/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.441383237e+00 | Ndiff   10.182 
+       10/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.440225525e+00 | Ndiff    9.654 
+       11/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.439218471e+00 | Ndiff    7.092 
+       12/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.438527168e+00 | Ndiff    5.132 
+       13/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.438170994e+00 | Ndiff    3.718 
+       14/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.437919838e+00 | Ndiff    3.047 
+       15/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.437734274e+00 | Ndiff    2.558 
+       16/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.437573546e+00 | Ndiff    2.231 
+       17/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.437446735e+00 | Ndiff    2.248 
+       18/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.437278673e+00 | Ndiff    2.451 
+       19/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.437096171e+00 | Ndiff    2.827 
+       20/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436827525e+00 | Ndiff    2.601 
+       21/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436656185e+00 | Ndiff    1.619 
+       22/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436595338e+00 | Ndiff    1.183 
+       23/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436546266e+00 | Ndiff    1.185 
+       24/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436480602e+00 | Ndiff    1.014 
+       25/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436454792e+00 | Ndiff    0.835 
+       26/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436437182e+00 | Ndiff    0.864 
+       27/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436413064e+00 | Ndiff    0.943 
+       28/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436376962e+00 | Ndiff    1.118 
+       29/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436301735e+00 | Ndiff    1.405 
+       30/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436165876e+00 | Ndiff    1.098 
+       31/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436114949e+00 | Ndiff    0.461 
+       32/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436108260e+00 | Ndiff    0.261 
+       33/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436106029e+00 | Ndiff    0.199 
+       34/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436105160e+00 | Ndiff    0.154 
+       35/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436104711e+00 | Ndiff    0.121 
+       36/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436104435e+00 | Ndiff    0.095 
+       37/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436104255e+00 | Ndiff    0.075 
+       38/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436104135e+00 | Ndiff    0.060 
+       39/300 after      0 sec. |    212.6 MiB | K    3 | loss  3.436104054e+00 | Ndiff    0.047 
+... done. converged.
