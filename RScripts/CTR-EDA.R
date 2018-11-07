@@ -25,4 +25,4 @@ ggplot(subset(data1, Impressions>0), aes(x=Clicks/Impressions,
        colour=agecat)) + geom_density()
 ggplot(subset(data1, Clicks>0), aes(x=Clicks/Impressions,
        colour=agecat)) + geom_density()
-       
+
