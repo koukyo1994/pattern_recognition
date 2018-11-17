@@ -97,3 +97,18 @@ def create_context_target(corpus, window_size=1):
             cs.append(corpus[idx + t])
         contexts.append(cs)
     return np.array(contexts), np.array(target)
+
+
+def convert_one_hot(target, vocab_size):
+    if target.ndim == 1:
+        one_hot = np.zeros([target.shape[0], vocab_size], dtype=np.int32)
+        for i, idx in enumerate(target):
+            one_hot[i, idx] = 1
+    elif target.ndim == 2:
+        one_hot = np.zeros([target.shape[0], target.shape[1], vocab_size],
+                           np.int32)
+        for i, v in enumerate(target):
+            for j, idx in enumerate(v):
+                one_hot[i, j, idx] = 1
+
+    return one_hot
