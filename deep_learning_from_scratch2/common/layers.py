@@ -1,7 +1,8 @@
 import numpy as np
+from common.functions import cross_entropy_error, softmax
 
 
-class MutMul:
+class MatMul:
     def __init__(self, W):
         self.params = [W]
         self.grads = [np.zeros_like(W)]
